@@ -22,28 +22,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //scrolling
-        //lvResult.isNestedScrollingEnabled = false
         lvResult.setHasFixedSize(true)
 
-        lvResult.layoutManager = LinearLayoutManager(this) //recyclerview adapter layout show
+        //recyclerview adapter layout show as list
+        lvResult.layoutManager = LinearLayoutManager(this)
         lvResult.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-//
-//        btn_dice1.setOnClickListener{
-////            val num = Random().nextInt(6)
-////            dice1.setImageResource(arrImg[num])
-////            dice1.tag = num + 1
-//            compare(dice1)
-//        }
-//
-//        btn_dice2.setOnClickListener{
-////            val num = Random().nextInt(6)
-////            dice2.setImageResource(arrImg[num])
-////            dice2.tag = num + 1
-//            compare(dice2)
-//        }
     }
 
-    fun clickCompare(sender: View) { //onClick
+    fun clickCompare(sender: View) {
         var dice:ImageView
         if(sender is ImageView) { //click image
             dice = sender
@@ -63,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         //show & compare
         listCompare.add(0,"$num1 ${if(num1 > num2)">" else if(num1 < num2)"<" else "="} $num2")
 
-        //lvResult.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listCompare) -> use when listview arrayadapter
         lvResult.adapter = ListAdapter(listCompare) //recyclerview adapter
     }
 }
